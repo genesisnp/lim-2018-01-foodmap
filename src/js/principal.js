@@ -1,6 +1,12 @@
 const selectRestaurant = document.getElementById("select-restaurant-rating");
 const span = document.getElementById("num_res");
-console.log(selectRestaurant)
+//BOTONES
+const btnSearch = document.getElementById("btn-search");
+const btnFavorite = document.getElementById("btn-favorite");
+
+//SECCIONES
+const sectionFavorite = document.getElementById("section-favorites");
+
 var map, infoWindow, filtro;
 
 function initMap(filtro) {
