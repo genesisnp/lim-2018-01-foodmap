@@ -3,11 +3,23 @@ const span = document.getElementById("num_res");
 //BOTONES
 const btnSearch = document.getElementById("btn-search");
 const btnFavorite = document.getElementById("btn-favorite");
-
-//SECCIONES
-const sectionFavorite = document.getElementById("section-favorites");
-
+const modalBody = document.getElementById("modalBody");
+//modal
+var modal , instance;
+document.addEventListener('DOMContentLoaded', function() {
+   modal = document.getElementById('modal1');
+   var instances = M.Modal.init(modal);
+    instance = M.Modal.getInstance(modal);
+ 
+});
 var map, infoWindow, filtro;
+
+const description ={
+  name:null,
+  direction:null,
+  abierto:null,
+
+}
 
 function initMap(filtro) {
   
@@ -39,12 +51,22 @@ function initMap(filtro) {
           let cont = 0;
           results.forEach(restaurant => {
             if(filtro){
-              if (restaurant[filtro] > 4) {
-                cont++;
-                createMarker(restaurant);
+              if(filtro == 'opening_hours'){
+               
+                if (restaurant[filtro] ? restaurant[filtro].open_now == true ? true : false : false) {
+                  
+                  cont++;
+                  createMarker(restaurant);
+                }
+              }else{
+                if (restaurant[filtro] > 4) {
+                  cont++;
+                  createMarker(restaurant);
+                }
               }
+              
             }else{
-              cont++;
+               cont++;
                createMarker(restaurant);
             }
             span.innerText = cont;
@@ -68,8 +90,16 @@ function createMarker(place) {
 
   google.maps.event.addListener(marker, 'click', function () {
     console.log(place)
-    infoWindow.setContent(place.name);
-    infoWindow.open(map, this);
+    modalBody.innerHTML = '';
+    let template = ` <h6 style="display:inline">${place.name}</h6><img src="${place.icon}" style="display:inline;width:15px">
+                    ${place.photos ? place.photos["0"].html_attributions["0"] ? '<strong>Dueño/fotos(click):'+place.photos["0"].html_attributions["0"]+'</strong>' : '' : '' }
+                    <p><strong>Direccion: </strong>${place.vicinity}</p>
+                    <p><strong>Abierto?</strong>${place.opening_hours ? place.opening_hours.open_now  ? 'Si' : 'No' : 'No'}</p>`;
+      
+    modalBody.innerHTML = template;
+    instance.open();
+   
+   
   });
 }
 selectRestaurant.addEventListener('change', function(){

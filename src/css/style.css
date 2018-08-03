@@ -41,4 +41,7 @@
     #map {
         height: 50%;
       }
+      .modal-content{
+        text-align: center;
+      }
 }
