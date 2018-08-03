@@ -6,28 +6,28 @@
         padding-top:45%;  */
         
     }
-    .contenido-loader{
+    .contenido-load{
         width: 100%;
-        height: 100%;   
+        height: 100%;  
+        justify-content: center; 
     }
 
-    h1{
+    h1 {
         text-align: center;
         font-family: 'robotto',#0f5381;
         font-size: 60px;
         padding-top:45%;
-        font
     }
 
     .loader {
-        border: 10px solid #f3f3f3; /* Light grey */
-        border-top: 10px solid #0f5381; /* Blue */
+        border: 10px solid #f3f3f3; 
+        border-top: 10px solid #0f5381;
         border-radius: 50%;
         width: 40px;
         height: 40px;
         animation: spin 2s linear infinite; 
         text-align: center;
-    }
+    } 
 
     @keyframes spin {
         0% { transform: rotate(0deg); }

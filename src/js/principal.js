@@ -2,7 +2,6 @@ const selectRestaurant = document.getElementById("select-restaurant-rating");
 const span = document.getElementById("num_res");
 //BOTONES
 const btnSearch = document.getElementById("btn-search");
-const btnFavorite = document.getElementById("btn-favorite");
 const modalBody = document.getElementById("modalBody");
 //modal
 var modal , instance;
@@ -13,13 +12,6 @@ document.addEventListener('DOMContentLoaded', function() {
  
 });
 var map, infoWindow, filtro;
-
-const description ={
-  name:null,
-  direction:null,
-  abierto:null,
-
-}
 
 function initMap(filtro) {
   
